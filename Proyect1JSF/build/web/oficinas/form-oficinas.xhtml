@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.oficinaFormTitle}</title>
+    </h:head>                <h2>#{str.oficinaFormHeader}</h2>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h2>#{str.oficinaFormHeader}</h2>
+                <p:fieldset legend="#{str.oficinaLegendForm}">
+                    <h:form>
+                        <h:panelGrid columns="1">
+                            <p:inputText placeholder="#{str.oficinaNamePrompt}" value="#{oficinaBean.oficina.nombreEncargado}"></p:inputText>
+                            <p:inputText placeholder="#{str.oficinaOcupationPrompt}" value="#{oficinaBean.oficina.ocupacion}"></p:inputText>
+                            <p:inputText placeholder="#{str.oficinaAreaPrompt}" value="#{oficinaBean.oficina.area}"></p:inputText>
+                            <p:selectOneMenu value="#{oficinaBean.oficina.ip.idIp}">
+                                <f:selectItems value="#{oficinaBean.ips}" var="r" itemLabel="#{r.dirIp}" itemValue="#{r.idIp}"></f:selectItems>
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <p:commandButton value="#{str.buttonSave}" action="#{oficinaBean.guardar()}"></p:commandButton>
+                        <p:commandButton value="#{str.buttonDelete}" action="#{oficinaBean.eliminar()}"></p:commandButton>
+                        <p:commandButton value="#{str.buttonCancel}" action="#{oficinaBean.cancelar()}"></p:commandButton>
+
+                    </h:form>
+                </p:fieldset>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
